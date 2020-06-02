@@ -13,7 +13,7 @@ def dongyeop(request, temp_id):
     mycom_form = CommentForm()
     myrecom_form = ReCommentForm()
     context = {'comment_form':mycom_form, 'temp':temp,'recomment_form':myrecom_form}
-    return render(request, 'dongyeop.html',context)
+    return render(request, 'pub.html',context)
 
 def create_comment(request, temp_id):
     filled_form = CommentForm(request.POST) 
