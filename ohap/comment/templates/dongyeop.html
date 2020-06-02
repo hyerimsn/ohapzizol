@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    동엽
+
+    <form method="post" action="{% url 'create_comment' temp.id %}">
+        {%csrf_token%}
+        {%for i in comment_form%}
+            {%if i.label != 'Post' %}
+            {{i.label}} : {{i}} 
+            {%endif%}
+        {%endfor%}
+        <input type="hidden" name="post" value={{temp.id}}>
+        <input type="submit">
+    </form>
+
+    {% for i in temp.comment_set.all %}
+
+    <p>-> {{i}} <a href="{% url 'delete_comment' i.id temp.id %}">삭제</a></p>
+
+        <form method="post" action="{% url 'create_recomment' temp.id %}">
+            {%csrf_token%}
+            {%for recom_form in recomment_form%}
+                {%if recom_form.label != 'Comment' %}
+                {{recom_form.label}} : {{recom_form}}
+                {%endif%}
+            {%endfor%}
+            <input type="hidden" name="comment" value={{i.id}}>
+            <input type="submit">
+        </form>
+
+        {%for recom in i.recomment_set.all%}
+        ↪{{recom}}<br>
+        {%endfor%}
+    <hr>
+    {%endfor%}
+
+</body>
+</html>

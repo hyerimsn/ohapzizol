@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account',
     'first',
-]
+    'comment',
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
