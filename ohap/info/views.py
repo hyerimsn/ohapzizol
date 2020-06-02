@@ -7,10 +7,7 @@ def info(request):
 
     return render(request, 'info.html', context)
 
-# def like(request):
-#     temp_target = request.POST.get('target')
 
-#     return render(request, 'info.html', )
     
 
 

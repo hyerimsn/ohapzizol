@@ -22,5 +22,15 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', info, name="info"),
-    # path('like/', like, name="like"),
+
 ]  + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+from first import views
+from comment.views import dongyeop,create_comment,delete_comment,create_recomment
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('',views.home ,name='home'),
+    path('dongyeop/<int:temp_id>', dongyeop, name="dongyeop"),
+    path('create_comment/<int:temp_id>',create_comment , name="create_comment"),
+    path('delete_comment/<int:com_id>/<int:temp_id>',delete_comment , name="delete_comment"),
+    path('create_recomment/<int:temp_id>',create_recomment , name="create_recomment"),
+]
