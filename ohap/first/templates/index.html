@@ -24,7 +24,18 @@
     <div>
         <h3>탭일레븐</h3>
     </div>
+=========pk값으로 연결
+인덱스페이지올시다
+    으잉?
+    {% for mypub in a %}
+    <a href="{% url 'pub' mypub.id %}">
 
+        <div class="pub_list">
+            <p>{{mypub.id}}.{{mypub.title}}</p>
+            <p>{{mypub.number}}</p>
+        </div>
+    </a>
+    {% endfor %}
     
 </body>
 </html>

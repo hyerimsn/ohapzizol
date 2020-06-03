@@ -15,19 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from info.views import info
 from django.conf import settings
 from django.conf.urls.static import static
-from first import views
-from comment.views import dongyeop,create_comment,delete_comment,create_recomment
+from first.views import index,pub,create_comment,beer,delete_comment,create_recomment
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home ,name='home'),
-    path('dongyeop/<int:temp_id>', dongyeop, name="dongyeop"),
-    path('create_comment/<int:temp_id>',create_comment , name="create_comment"),
-    path('delete_comment/<int:com_id>/<int:temp_id>',delete_comment , name="delete_comment"),
-    path('create_recomment/<int:temp_id>',create_recomment , name="create_recomment"),
-    path('admin/', admin.site.urls),
-    path('info/', info, name="info"),
+    path('',index ,name='index'),
+    path('pub/<int:mypub_id>', pub, name="pub"),
+    path('create_comment/<int:mypub_id>',create_comment , name="create_comment"),
+    path('delete_comment/<int:com_id>/<int:mypub_id>',delete_comment , name="delete_comment"),
+    path('create_recomment/<int:mypub_id>',create_recomment , name="create_recomment"),
+    path('beer/<int:mymenu_id>',beer, name='beer')
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
