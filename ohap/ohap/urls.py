@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from info.views import info
+from info.views import info,like
 from django.conf import settings
 from django.conf.urls.static import static
 from first import views
@@ -30,4 +30,5 @@ urlpatterns = [
     path('create_recomment/<int:temp_id>',create_recomment , name="create_recomment"),
     path('admin/', admin.site.urls),
     path('info/', info, name="info"),
+    path('like/', like, name="like"),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
