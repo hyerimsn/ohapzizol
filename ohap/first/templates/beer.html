@@ -1,24 +1,39 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/beer.css' %}">
 </head>
 <body>
+    <div class="beer_info">
     {% for i in mybeer %}
+    <div class="beers">
     {{i.pubname}}<br>
+    </div>
+    <div class="beers">
     {{i.beername}}<br>
-    <img src="{{i.beerimage.url}}" width="100px" height="100px"><br>
+    </div>
+    <img class="beerimg" src="{{i.beerimage.url}}"><br>
+    <div class="beers">
     {{i.taste}}<br>
+    </div>
+    <div class="beers">
     {{i.price}}<br>
+    </div>
+    <div class="beers">
     {{i.alcohol}}<br>
+    </div>
     <div>
         {{i.likes.count}}
-        <form method="GET" action="{%url 'like' %}"></form>
+        <form method="GET" action="{url 'like' %}"></form>
     </div>
+    <div class="beers">
     {{i.information}}<br>
-    {{i.information}}
+    </div>
+    </div>
    <!-- <div>
         <form method="POST" action="{url'like' %}">
             {% csrf_token %}

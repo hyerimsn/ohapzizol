@@ -24,6 +24,7 @@
 =========pk값으로 연결
 인덱스페이지올시다
     으잉?
+    <div class=pub_name>
     {% for mypub in a %}
     <a href="{% url 'pub' mypub.id %}">
 
@@ -33,6 +34,7 @@
         </div>
     </a>
     {% endfor %}
+</div>
     
 </body>
 </html>

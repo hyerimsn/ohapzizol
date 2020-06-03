@@ -26,7 +26,6 @@ class Menudetail(models.Model):
     alcohol = models.CharField('알콜도수',max_length=30)
     # likes = models.ManyToManyField(user, blank=True)
     
-
     def __str__(self):
         return self.information
 

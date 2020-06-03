@@ -11,7 +11,7 @@ def index(request):
 
 def pub(request, mypub_id):
     mypub = get_object_or_404(Publist,pk=mypub_id)
-    menu = Menulist.objects.all()
+    menu = Menulist.objects.filter(Publist=mypub)
     #댓글
     mycom_form = CommentForm()
     myrecom_form = ReCommentForm()
