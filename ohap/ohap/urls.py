@@ -16,39 +16,24 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth.views import LoginView,LogoutView #login
 from django.urls import path
-from info.views import info,like
+from info.views import info
 from django.conf import settings
 from django.conf.urls.static import static
-<<<<<<< HEAD
-from first.views import index,pub,create_comment,beer,delete_comment,create_recomment
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('',index ,name='index'),
-    path('pub/<int:mypub_id>', pub, name="pub"),
-    path('create_comment/<int:mypub_id>',create_comment , name="create_comment"),
-    path('delete_comment/<int:com_id>/<int:mypub_id>',delete_comment , name="delete_comment"),
-    path('create_recomment/<int:mypub_id>',create_recomment , name="create_recomment"),
-    path('beer/<int:mymenu_id>',beer, name='beer')
-=======
-from first import views
 from account import views as account_views #account view
-from comment.views import dongyeop,create_comment,delete_comment,create_recomment
+from first.views import pub, create_comment,delete_comment,create_recomment
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home ,name='home'),
+    path('',account_views.home ,name='home'),
     path('account/sign_up/',account_views.sign_up,name="sign_up"), #회원가입
     path('account/login/',LoginView.as_view(),name="login"), #로그인
     path('account/logout/',LogoutView.as_view(),name="logout"), #로그아웃
-    path('dongyeop/<int:temp_id>', dongyeop, name="dongyeop"),
+    path('pub/<int:temp_id>', pub, name="pubS"),
     path('create_comment/<int:temp_id>',create_comment , name="create_comment"),
     path('delete_comment/<int:com_id>/<int:temp_id>',delete_comment , name="delete_comment"),
     path('create_recomment/<int:temp_id>',create_recomment , name="create_recomment"),
     path('info/', info, name="info"),
-<<<<<<< HEAD
-    path('like/', like, name="like"),
-=======
->>>>>>> 44d8d76e3b4dbe28db0699cb6497b09f4cf011d8
->>>>>>> 457bfaad762d78fbeff44690ef4370436a7b37be
+# <<<<<<< HEAD
+    # path('like/', like, name="like"),
+# >>>>>>> 457bfaad762d78fbeff44690ef4370436a7b37be
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

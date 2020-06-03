@@ -24,6 +24,7 @@ class Menudetail(models.Model):
     information = models.TextField('정보')
     price =models.CharField('가격',max_length= 30)
     alcohol = models.CharField('알콜도수',max_length=30)
+    # likes = models.ManyToManyField(user, blank=True)
     
 
     def __str__(self):

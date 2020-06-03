@@ -8,17 +8,17 @@ def info(request):
 
     return render(request, 'info.html', context)
 
-class PostLikeRedirect(RedirectView):
-    def get_redirect_url(self, *args, **kwargs):
-        slug= self.kwargs.get("slug")
-        print(slug)
-        obj = get_object_or_404(Beer, slug=slug)
-        url_ = obj.get_absolute_url()
-        user = self.request.user
-        if user.is_authenticated():
-            if user in obj.likes.all()
-            obj.likes.add(user)
-        return url_ 
+# class PostLikeRedirect(RedirectView):
+#     def get_redirect_url(self, *args, **kwargs):
+#         slug= self.kwargs.get("slug")
+#         print(slug)
+#         obj = get_object_or_404(Beer, slug=slug)
+#         url_ = obj.get_absolute_url()
+#         user = self.request.user
+#         if user.is_authenticated():
+#             if user in obj.likes.all()
+#             obj.likes.add(user)
+#         return url_ 
 
 # def like(request, beer_id):
 #     mylike = Beer.objects.get(pk=beer_id)
