@@ -20,7 +20,7 @@ def pub(request, mypub_id):
 
 def beer(request, mymenu_id):
     mymenu = get_object_or_404(Menulist,pk=mymenu_id)
-    mybeer = Menudetail.objects.all()
+    mybeer = Menudetail.objects.filter(menulist=mymenu)
     context ={'mymenu':mymenu,'mybeer':mybeer}
     return render(request, 'beer.html', context)
 

@@ -6,11 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    {% for i in menu %}
-    {{i.body}}
-    <hr>
-    {% endfor %}
-    
+
     {% for mymenu in mypub.menulist_set.all %}
     <a href="{% url 'beer' mymenu.id %}">
 

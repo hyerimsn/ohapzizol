@@ -21,15 +21,12 @@
         <p> NB </p>
     </header>
 
-=========pk값으로 연결
-인덱스페이지올시다
-    으잉?
     <div class=pub_name>
     {% for mypub in a %}
     <a href="{% url 'pub' mypub.id %}">
 
         <div class="pub_list">
-            <p>{{mypub.id}}.{{mypub.title}}</p>
+            <p>{{mypub.title}}</p>
             <p>{{mypub.number}}</p>
         </div>
     </a>
