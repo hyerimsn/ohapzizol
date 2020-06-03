@@ -1,6 +1,46 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect,get_object_or_404
+from .forms import CommentForm
+from .models import Publist,Menulist,Menudetail,Comment,ReComment
 
 # Create your views here.
 
-def home(request):
-    return render(request,'index.html')
+def index(request):
+    a = Publist.objects.all()
+
+    return render(request,'index.html',{'a':a})
+
+def pub(request, mypub_id):
+    mypub = get_object_or_404(Publist,pk=mypub_id)
+    menu = Menulist.objects.all()
+    #댓글
+    mycom_form = CommentForm()
+    context = {'comment_form':mycom_form,'mypub':mypub,'menu':menu}
+    return render(request, 'pub.html', context)
+
+def beer(request, mymenu_id):
+    mymenu = get_object_or_404(Menulist,pk=mymenu_id)
+    mybeer = Menudetail.objects.all()
+    context ={'mymenu':mymenu,'mybeer':mybeer}
+    return render(request, 'beer.html', context)
+
+
+def create_comment(request, mypub_id):
+    filled_form = CommentForm(request.POST)
+
+    if filled_form.is_valid():
+        filled_form.save()
+
+    return redirect('pub', mypub_id)
+
+def delete_comment(request, com_id,mypub_id):
+    mycom = Comment.objects.get(id = com_id)
+    mycom.delete()
+    return redirect('pub', mypub_id)
+    
+def create_recomment(request, mypub_id):
+    filled_form = ReCommentForm(request.POST) 
+
+    if filled_form.is_valid():
+        filled_form.save()
+    
+    return redirect('pub', mypub_id)

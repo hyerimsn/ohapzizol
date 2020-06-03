@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <p>회원가입</p> <p>로그인</p>
+    {%if user.is_authenticated%}
+        {{user.username}}님이 접속하셨습니다.
+        <a href="{%url 'logout'}">로그아웃</a>
+    {%else%}
+    <a href="{%url 'sign_up'%}">회원가입</a> 
+    <a href="{%url 'login'%}">로그인</a>
+    {%endif%}
     <header>
         <p> PU </p>
         <p> NB </p>
@@ -24,7 +30,18 @@
     <div>
         <h3>탭일레븐</h3>
     </div>
+=========pk값으로 연결
+인덱스페이지올시다
+    으잉?
+    {% for mypub in a %}
+    <a href="{% url 'pub' mypub.id %}">
 
+        <div class="pub_list">
+            <p>{{mypub.id}}.{{mypub.title}}</p>
+            <p>{{mypub.number}}</p>
+        </div>
+    </a>
+    {% endfor %}
     
 </body>
 </html>
