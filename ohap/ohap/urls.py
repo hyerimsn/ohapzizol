@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth.views import LoginView,LogoutView #login
 from django.urls import path
+from info.views import info
 from django.conf import settings
 from django.conf.urls.static import static
 from first.views import index,pub,create_comment,beer,delete_comment,create_recomment
@@ -32,4 +33,7 @@ urlpatterns = [
     path('account/sign_up/',account_views.sign_up,name="sign_up"), #회원가입
     path('account/login/',LoginView.as_view(),name="login"), #로그인
     path('account/logout/',LogoutView.as_view(),name="logout"), #로그아웃
+# <<<<<<< HEAD
+    # path('like/', like, name="like"),
+# >>>>>>> 457bfaad762d78fbeff44690ef4370436a7b37be
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
