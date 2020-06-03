@@ -1,8 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 
-def home(request):
-    return render(request,'index.html')
 
 def sign_up(request):
     if request.method == "POST":
@@ -11,7 +9,7 @@ def sign_up(request):
 
         if sign_up_form.is_valid:
             sign_up_form.save()
-            return redirect('home')
+            return redirect('index')
 
         else:
             return redirect('sign_up')

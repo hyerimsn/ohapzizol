@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from .forms import CommentForm
+from .forms import CommentForm,ReCommentForm
 from .models import Publist,Menulist,Menudetail,Comment,ReComment
 
 # Create your views here.
@@ -14,7 +14,8 @@ def pub(request, mypub_id):
     menu = Menulist.objects.all()
     #댓글
     mycom_form = CommentForm()
-    context = {'comment_form':mycom_form,'mypub':mypub,'menu':menu}
+    myrecom_form = ReCommentForm()
+    context = {'comment_form':mycom_form,'mypub':mypub,'menu':menu, 'recomment_form':myrecom_form}
     return render(request, 'pub.html', context)
 
 def beer(request, mymenu_id):
