@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <p>회원가입</p> <p>로그인</p>
+    {%if user.is_authenticated%}
+        {{user.username}}님이 접속하셨습니다.
+        <a href="{%url 'logout'}">로그아웃</a>
+    {%else%}
+    <a href="{%url 'sign_up'%}">회원가입</a> 
+    <a href="{%url 'login'%}">로그인</a>
+    {%endif%}
     <header>
         <p> PU </p>
         <p> NB </p>
