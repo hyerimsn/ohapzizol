@@ -27,20 +27,16 @@
     {{i.alcohol}}<br>
     </div>
     <div>
-        {{i.likes.count}}
-        <form method="GET" action="{url 'like' %}"></form>
+        좋아요 : {{i.likes.count}}
+        <form method="POST" action="{% url 'like' i.id %}">
+            {% csrf_token %}
+        <input type="submit" value="하트">
+        </form>
     </div>
     <div class="beers">
     {{i.information}}<br>
     </div>
     </div>
-   <!-- <div>
-        <form method="POST" action="{url'like' %}">
-            {% csrf_token %}
-            {{like_form}}
-        <input type="submit" value="좋아요">
-    </form>
-    </div>-->
     {% endfor %}
 </body>
 </html>

@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .forms import CommentForm,ReCommentForm
-from .models import Publist,Menulist,Menudetail,Comment,ReComment
+from .models import Publist,Menulist,Menudetail,Comment,ReComment,User
 
 # Create your views here.
 
@@ -45,3 +45,19 @@ def create_recomment(request, mypub_id):
         filled_form.save()
     
     return redirect('pub', mypub_id)
+
+def like(request, mylike_id):
+    mylike = get_object_or_404(Menudetail,pk=mylike.id)
+    ilike.filter(like=request.user)
+    # ilike = Menudetail.objects.filter(menudetail=mylike)
+    # mylike = Menudetail.objects.get(Menudetail,pk=mylike_id)
+    # mylike.filter(Menudetail=likes)
+    if request.method == 'POST':
+        user = request.user
+        if ilike.exists():
+            Menudetail.likes.remove(user)
+        else:
+            Menudetail.likes.add(user)
+    context = {'likes_count' : Menudetail.total_likes}
+
+    return redirect(request, 'beer.html', context)

@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
-
+from django.contrib.auth import get_user_model
+User = get_user_model()
+User.objects.all()
 # Create your models here.
 class Publist(models.Model):
     title = models.CharField(max_length=100)
@@ -21,11 +23,11 @@ class Menudetail(models.Model):
     pubname = models.CharField('펍이름',max_length=50)
     beername = models.CharField('맥주이름',max_length=50)
     beerimage = models.ImageField('이미지')
+    likes = models.ManyToManyField(User, blank=True)
     tasate = models.TextField('맛')
     information = models.TextField('정보')
     price =models.CharField('가격',max_length= 30)
     alcohol = models.CharField('알콜도수',max_length=30)
-    # likes = models.ManyToManyField(user, blank=True)
     
     def __str__(self):
         return self.information
