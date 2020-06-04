@@ -1,5 +1,6 @@
-.wrapper{
-    margin-left: 300px;
+body{
+    display: block;
+    margin: 0px;
 }
 
 .beer_info{

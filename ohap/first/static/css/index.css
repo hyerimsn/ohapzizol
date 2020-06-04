@@ -2,10 +2,6 @@ body{
     display: block;
     margin: 0px;
 }
-
-.wrapper{
-    margin-left: 300px;
-}
 .login{
     font-size: 12px;
     padding-right: 15px;
