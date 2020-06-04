@@ -1,3 +1,7 @@
+.wrapper{
+    margin-left: 300px;
+}
+
 .beer_info{
     border: 2px solid cornflowerblue;
     border-radius: 10px;

@@ -32,7 +32,7 @@ class Menudetail(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Publist, on_delete=models.CASCADE)
-    body = models.CharField('댓글달아!',max_length=150)
+    body = models.CharField('댓글!',max_length=150)
     created_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
