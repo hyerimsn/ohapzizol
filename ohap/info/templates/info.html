@@ -15,7 +15,7 @@
     {{i.price}}<br>
     {{i.alcohol}}<br>
     <div>
-        <form method="POST" action="{url'like' %}">
+        <form method="POST" action="{url 'like' %}">
             {% csrf_token %}
             {{like_form}}
         <input type="submit" value="좋아요">
