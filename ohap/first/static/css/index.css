@@ -1,0 +1,44 @@
+body{
+    display: block;
+    margin: 0px;
+}
+.login{
+    font-size: 12px;
+    padding-right: 15px;
+    text-align: right;
+
+}
+.main_page{
+    padding-top: 10px;
+    padding-bottom: 1px;
+    padding-left: 3px;
+    border: 2px solid cornflowerblue;
+    border-radius:5px;
+    max-width: 300px;
+
+}
+
+header {
+    padding-top: 30px;
+    padding-left: 30px;
+    color: orange;
+    line-height: 1px;
+    font-size: 30px;
+
+
+}
+
+.pub_list{
+    padding-top: 1px;
+    padding-bottom: 1px;
+    max-width: 300px;
+    font-size: 17px;
+    text-align: center;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    background-color:rgb(240, 240, 240);
+    color:rgb(30, 30, 30);
+    margin: 10px;
+    background-position: center;
+
+}

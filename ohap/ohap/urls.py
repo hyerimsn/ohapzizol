@@ -14,20 +14,27 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth.views import LoginView,LogoutView #login
 from django.urls import path
 from info.views import info
 from django.conf import settings
 from django.conf.urls.static import static
-from first import views
-from comment.views import dongyeop,create_comment,delete_comment,create_recomment
+from first.views import index,pub,create_comment,beer,delete_comment,create_recomment,like
+from account import views as account_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home ,name='home'),
-    path('dongyeop/<int:temp_id>', dongyeop, name="dongyeop"),
-    path('create_comment/<int:temp_id>',create_comment , name="create_comment"),
-    path('delete_comment/<int:com_id>/<int:temp_id>',delete_comment , name="delete_comment"),
-    path('create_recomment/<int:temp_id>',create_recomment , name="create_recomment"),
-    path('admin/', admin.site.urls),
-    path('info/', info, name="info"),
+    path('',index ,name='index'),
+    path('pub/<int:mypub_id>', pub, name="pub"),
+    path('create_comment/<int:mypub_id>',create_comment , name="create_comment"),
+    path('delete_comment/<int:com_id>/<int:mypub_id>',delete_comment , name="delete_comment"),
+    path('create_recomment/<int:mypub_id>',create_recomment , name="create_recomment"),
+    path('beer/<int:mymenu_id>',beer, name='beer'), 
+    path('account/sign_up/',account_views.sign_up,name="sign_up"), #회원가입
+    path('account/login/',LoginView.as_view(),name="login"), #로그인
+    path('account/logout/',LogoutView.as_view(),name="logout"), #로그아웃
+    path('like/<int:mylike_id>',like, name='like'),
+# <<<<<<< HEAD
+    
+# >>>>>>> 457bfaad762d78fbeff44690ef4370436a7b37be
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

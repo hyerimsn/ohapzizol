@@ -1,0 +1,33 @@
+body{
+    display: block;
+    margin: 0px;
+}
+
+.beer_info{
+    border: 2px solid cornflowerblue;
+    border-radius: 10px;
+    max-width: 300px;
+}
+
+.beers{
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-size: 12px;
+    text-align: center; 
+    letter-spacing: 1px;
+    border-radius: 10px;
+    background-color:rgb(240, 240, 240);
+    color:rgb(30, 30, 30);
+    margin: 10px;
+    background-position: center;
+    letter-spacing: 1px;
+    max-width: 300px;
+}
+
+.beerimg{
+    align-content: center;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+}
+

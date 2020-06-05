@@ -1,30 +1,42 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width= device-width", initial-scale="1.0">
     <title> PNUB </title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
 </head>
 <body>
-    <p>회원가입</p> <p>로그인</p>
-    <header>
-        <p> PU </p>
-        <p> NB </p>
-    </header>
+    <div class = "wrapper">
+        <div class="main_page">
+        <div class="login">
+        {%if user.is_authenticated%}
+            {{user.username}}님이 접속하셨습니다.
+            <a href="{%url 'logout' %}">로그아웃</a>
+        {%else%}
+        <a href="{%url 'sign_up'%}">회원가입</a> 
+        <a href="{%url 'login'%}">로그인</a>
+        {%endif%}
+        </div>
+        <header>
+            <h> PU </p>
+            <p> NB </p>
+        </header>
 
-    <div>
-        <h3>갈매기브루잉</h3>
-    </div>
+        <div class=pub_name>
+        {% for mypub in a %}
+        <a href="{% url 'pub' mypub.id %}">
 
-    <div>
-        <h3>수제맥주집</h3>
-    </div>
+            <div class="pub_list">
+                <p>{{mypub.title}}</p>
+                <p>{{mypub.number}}</p>
+            </div>
+        </a>
+        {% endfor %}
+        </div>
     
-    <div>
-        <h3>탭일레븐</h3>
     </div>
-
     
 </body>
 </html>
