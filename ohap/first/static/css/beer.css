@@ -1,3 +1,7 @@
+body{
+    display: block;
+    margin: 0px;
+}
 
 .beer_info{
     border: 2px solid cornflowerblue;
