@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from .forms import CommentForm,ReCommentForm
 from .models import Publist,Menulist,Menudetail,Comment,ReComment,User
 
+
 # Create your views here.
 
 def index(request):
@@ -65,14 +66,16 @@ def like(request, mylike_id):
     # return redirect(request, 'beer.html', context)
 
 
-    if request.method == 'POST':
+    if request.method == 'POST' and request.user.is_authenticated:
         user = request.user
         mylike = request.POST.get('pk', None)
         alist = Menudetail.objects.get(pk = mylike_id)
-        if alist.likes.filter(id = user.id) .exists():
+        if alist.likes.filter(id = user.id).exists():
             alist.likes.remove(user)
         else:
             alist.likes.add(user)
+        context = {'likes_count' : alist.likes}
+    else :
+        return redirect('login')
     
-    context = {'likes_count' : alist.likes}
     return render(request,'beer.html',{'context':context})

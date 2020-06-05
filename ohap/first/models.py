@@ -24,7 +24,7 @@ class Menudetail(models.Model):
     beername = models.CharField('맥주이름',max_length=50)
     beerimage = models.ImageField('이미지')
     likes = models.ManyToManyField(User, blank=True)
-    tasate = models.TextField('맛')
+    taste = models.TextField('맛')
     information = models.TextField('정보')
     price =models.CharField('가격',max_length= 30)
     alcohol = models.CharField('알콜도수',max_length=30)
