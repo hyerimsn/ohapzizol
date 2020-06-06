@@ -16,7 +16,7 @@ def pub(request, mypub_id):
     #댓글
     mycom_form = CommentForm()
     myrecom_form = ReCommentForm()
-    context = {'comment_form':mycom_form,'mypub':mypub,'menu':menu, 'recomment_form':myrecom_form}
+    context = {'comment_form':mycom_form,'mypub':mypub,'menu':menu,'recomment_form':myrecom_form}
     return render(request, 'pub.html', context)
 
 def beer(request, mymenu_id):
@@ -45,6 +45,11 @@ def create_recomment(request, mypub_id):
     if filled_form.is_valid():
         filled_form.save()
     
+    return redirect('pub', mypub_id)
+
+def delete_recomment(request, recom_id, mypub_id):
+    myrecom = ReComment.objects.get(id = recom_id)
+    myrecom.delete()
     return redirect('pub', mypub_id)
 
 def like(request, mylike_id):
