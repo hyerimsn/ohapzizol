@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 class Beer(models.Model):
     pubname = models.TextField(null=True)
@@ -10,6 +11,7 @@ class Beer(models.Model):
     information = models.TextField(null=True)
     price = models.TextField(null=True)
     alcohol = models.TextField(null=True)
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank = True)
 
     def __str__(self):
         return self.beername

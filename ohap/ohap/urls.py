@@ -19,7 +19,7 @@ from django.urls import path
 from info.views import info
 from django.conf import settings
 from django.conf.urls.static import static
-from first.views import index,pub,create_comment,beer,delete_comment,create_recomment,like
+from first.views import index,pub,create_comment,beer,delete_comment,create_recomment,delete_recomment,like
 from account import views as account_views
 
 urlpatterns = [
@@ -29,6 +29,7 @@ urlpatterns = [
     path('create_comment/<int:mypub_id>',create_comment , name="create_comment"),
     path('delete_comment/<int:com_id>/<int:mypub_id>',delete_comment , name="delete_comment"),
     path('create_recomment/<int:mypub_id>',create_recomment , name="create_recomment"),
+    path('delete_recomment/<int:recom_id>/<int:mypub_id>',delete_recomment, name="delete_recomment"),
     path('beer/<int:mymenu_id>',beer, name='beer'), 
     path('account/sign_up/',account_views.sign_up,name="sign_up"), #회원가입
     path('account/login/',LoginView.as_view(),name="login"), #로그인

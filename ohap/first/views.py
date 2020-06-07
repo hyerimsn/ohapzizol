@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from .forms import CommentForm,ReCommentForm
 from .models import Publist,Menulist,Menudetail,Comment,ReComment,User
 
+
 # Create your views here.
 
 def index(request):
@@ -15,7 +16,7 @@ def pub(request, mypub_id):
     #댓글
     mycom_form = CommentForm()
     myrecom_form = ReCommentForm()
-    context = {'comment_form':mycom_form,'mypub':mypub,'menu':menu, 'recomment_form':myrecom_form}
+    context = {'comment_form':mycom_form,'mypub':mypub,'menu':menu,'recomment_form':myrecom_form}
     return render(request, 'pub.html', context)
 
 def beer(request, mymenu_id):
@@ -47,23 +48,10 @@ def create_recomment(request, mypub_id):
     
     return redirect('pub', mypub_id)
 
-# def like(request, mylike_id):
-    # mylike = get_object_or_404(Menudetail, pk=mylike_id)
-    # alist = mylike.objects.filter(likes = request.user)
-    
-    # ilike = Menudetail.objects.filter(menudetail=mylike)
-    # mylike = Menudetail.objects.get(Menudetail,pk=mylike_id)
-    # mylike.filter(Menudetail=likes)
-
-    # if request.method == 'POST':
-    #     user = request.user
-    #     if alist.exists():
-    #         mylike.likes.remove(request.user)
-    #     else:
-    #         mylike.likes.add(user)
-    # context = {'likes_count' : mylike.total_likes}
-
-    # return redirect(request, 'beer.html', context)
+def delete_recomment(request, recom_id, mypub_id):
+    myrecom = ReComment.objects.get(id = recom_id)
+    myrecom.delete()
+    return redirect('pub', mypub_id)
 
 def like(request, mylike_id):
     if request.method == 'POST':

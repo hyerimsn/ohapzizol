@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>infopage</title>
+</head>
+<body>
+    {% for i in take_all_Beer %}
+    {{i.pubname}}<br>
+    {{i.beername}}<br>
+    <img src="{{i.beerimage.url}}" width="100px" height="100px"><br>
+    {{i.taste}}<br>
+    {{i.price}}<br>
+    {{i.alcohol}}<br>
+    <div>
+        <form method="POST" action="{url 'like' %}">
+            {% csrf_token %}
+            {{like_form}}
+        <input type="submit" value="좋아요">
+    </form>
+    </div>
+    {{i.information}}<br>
+    {% endfor %}
+
+
+</body>
+</html>
