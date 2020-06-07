@@ -12,33 +12,33 @@
 </head>
 <body>
     <div class="beer_info">
-    {% for i in mybeer %}
-    <div class="beers">
-    {{i.pubname}}<br>
-    </div>
-    <div class="beers">
-    {{i.beername}}<br>
-    </div>
-    <img class="beerimg" src="{{i.beerimage.url}}"><br>
-    <div class="beers">
-    {{i.taste}}<br>
-    </div>
-    <div class="beers">
-    {{i.price}}<br>
-    </div>
-    <div class="beers">
-    {{i.alcohol}}<br>
-    </div>
-    <div>
-        좋아요 : {{i.likes.count}}
+        {% for i in mybeer %}
+        <div class="beers">
+            {{i.pubname}}<br>
+        </div>
+        <div class="beers">
+            {{i.beername}}<br>
+        </div>
+        <img class="beerimg" src="{{i.beerimage.url}}">
+        
         <form method="POST" action="{% url 'like' i.id %}">
             {% csrf_token %}
-        <input type="submit" value="하트">
+        <input type="submit" value="하트" class="likebutton"> 
+            {{i.likes.count}}
         </form>
-    </div>
-    <div class="beers">
-    {{i.information}}<br>
-    </div>
+        
+        <div class="beers">
+            {{i.taste}}<br>
+        </div>
+        <div class="beers">
+            {{i.price}}<br>
+        </div>
+        <div class="beers">
+            {{i.alcohol}}<br>
+        </div>
+        <div class="beers">
+            {{i.information}}<br>
+        </div>
     </div>
     {% endfor %}
 </body>
