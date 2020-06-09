@@ -6,9 +6,36 @@
     <meta name="viewport" content="width= device-width", initial-scale="1.0">
     <title> PNUB </title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(function() {
+                $( "#some_flag" ).dialog({
+                    modal: true,
+                    closeOnEscape: false,
+                    dialogClass: "no-close",
+                    resizable: false,
+                    draggable: false,
+                    width: 600,
+                    buttons: [
+                        {
+                            text: "OK",
+                            click: function() {
+                            $( this ).dialog( "close" );
+                            }
+                        }
+                    ]
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <div class = "wrapper">
+        {% if login_flag %}
+        <div id="login_flag" title="Login Flag">
+            <p>하트를 누르려면 로그인부터 하라능</p>
+        </div>
+        {% endif %}
         <div class="main_page">
         <div class="login">
         {%if user.is_authenticated%}
