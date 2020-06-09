@@ -30,7 +30,7 @@ class Menudetail(models.Model):
     alcohol = models.CharField('알콜도수',max_length=30)
     
     def __str__(self):
-        return self.information
+        return self.beername
 
 class Comment(models.Model):
     post = models.ForeignKey(Publist, on_delete=models.CASCADE)
