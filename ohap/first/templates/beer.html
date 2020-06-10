@@ -12,6 +12,22 @@
 </head>
 <body>
     <div class="beer_info">
+        <div class="login">
+            {%if user.is_authenticated%}
+                {{user.username}}님이 접속하셨습니다.
+                <a href="{%url 'logout' %}">로그아웃</a>
+            {%else%}
+            <a href="{%url 'sign_up'%}">회원가입</a> 
+            <a href="{%url 'login'%}">로그인</a>
+            {%endif%}
+            <a href=" {%url 'index'%}">
+            </div>
+            <header>
+                <h> PU </p>
+                <p> NB </p>
+            </header>    
+            </a>
+
         {% for i in mybeer %}
         <div class="beers">
             {{i.pubname}}<br>

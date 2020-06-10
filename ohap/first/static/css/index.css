@@ -2,30 +2,33 @@ body{
     display: block;
     margin: 0px;
 }
+
 .login{
     font-size: 12px;
     padding-right: 15px;
     text-align: right;
 
 }
-.main_page{
-    padding-top: 10px;
-    padding-bottom: 1px;
-    padding-left: 3px;
-    border: 2px solid cornflowerblue;
-    border-radius:5px;
-    max-width: 300px;
-
-}
-
 header {
     padding-top: 30px;
     padding-left: 30px;
     color: orange;
     line-height: 1px;
     font-size: 30px;
+}
 
+a{
+    text-decoration: none;
+}
 
+.main_page{
+    margin: 10px;
+    background-color: rgb(250, 250, 250);
+    padding-top: 10px;
+    padding-bottom: 1px;
+    padding-left: 3px;
+    border-radius:5px;
+    max-width: 300px;
 }
 
 .pub_list{
@@ -42,3 +45,4 @@ header {
     background-position: center;
 
 }
+

@@ -7,7 +7,6 @@ from .models import Publist,Menulist,Menudetail,Comment,ReComment,User
 
 def index(request):
     a = Publist.objects.all()
-
     return render(request,'index.html',{'a':a})
 
 def pub(request, mypub_id):
