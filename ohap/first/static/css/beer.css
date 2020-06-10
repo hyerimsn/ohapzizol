@@ -17,10 +17,14 @@ body{
 
 }
 header {
-    background-size: cover;
-    padding-top: 30px;
-    padding-left: 30px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 50px;
+    padding-bottom: 20px;
     color: orange;
+    line-height: 1px;
+    font-size: 30px;
+    background-size: cover;
     line-height: 1px;
     font-size: 30px;
 }
@@ -45,8 +49,17 @@ a{
 
 .beerimg{
     align-content: center;
-    width: 150px;
-    height: 150px;
+    width: 270px;
+    height: 270px;
     text-align: center;
+    border-radius: 10px;
+    padding-bottom: 10px;
 }
 
+.likebutton{
+    margin-left: 12px;
+    background-color: rgb(240, 240, 240);
+    border-width: 0px;
+    border-radius: 10px;
+    font-size: 12px;
+}

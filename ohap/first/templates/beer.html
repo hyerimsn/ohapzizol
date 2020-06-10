@@ -39,8 +39,8 @@
         
         <form method="POST" action="{% url 'like' i.id %}">
             {% csrf_token %}
-        <input type="submit" value="하트" class="likebutton"> 
-            {{i.likes.count}}
+        <input type="submit" value="❤ {{i.likes.count}}" class="likebutton"> 
+            
         </form>
         
         <div class="beers">
