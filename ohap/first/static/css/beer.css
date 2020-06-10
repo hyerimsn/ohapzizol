@@ -17,6 +17,7 @@ body{
 
 }
 header {
+    background-size: cover;
     padding-top: 30px;
     padding-left: 30px;
     color: orange;

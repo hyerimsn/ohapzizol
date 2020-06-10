@@ -20,15 +20,15 @@
             <a href=" {%url 'index'%}">
             </div>
             <header>
-                <h> PU </p>
-                <p> NB </p>
+                <h3> PU <h3>
+                <h3> NB </h3>
             </header>
             </a>
     
         {% for mymenu in mypub.menulist_set.all %}
         <a href="{% url 'beer' mymenu.id %}">
             <div class="menu_list">
-                <p>{{mymenu.id}}.{{mymenu.body}}</p>
+                <p>{{mymenu.body}}</p>
                 <hr>
             </div>
         </a>

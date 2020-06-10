@@ -2,6 +2,13 @@ body{
     display: block;
     margin: 0px;
 }
+
+.login{
+    font-size: 12px;
+    padding-right: 15px;
+    text-align: right;
+
+}
 .wrapper{
     text-decoration: none;
     margin: 10px;
@@ -10,25 +17,34 @@ body{
     max-width: 300px;
 }
 
-.login{
-    font-size: 12px;
-    padding-right: 15px;
-    text-align: right;
-
+h3{
+    margin-bottom: 0px;
 }
 header {
-    padding-top: 30px;
-    padding-left: 30px;
+    padding-top: 1px;
+    padding-left: 10px;
+    padding-right: 50px;
+    padding-bottom: 80px;
     color: orange;
     line-height: 1px;
     font-size: 30px;
+    text-shadow: 2px 2px 2px gray; 
+    background-image: url('../images/CheerBeer.jpg');
+    border-radius: 10px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 10px;
 }
+
 a{
     text-decoration: none;
 }
 
 .menu_list{
     margin: 10px;
+    padding-top: 3px;
     font-size: 12px;
     text-align: center; 
     letter-spacing: 1px;
@@ -38,6 +54,10 @@ a{
     margin: 10px;
     background-position: center;
     letter-spacing: 1px;
+}
+
+hr{
+    border-width: 0px;
 }
 
 .comment{
