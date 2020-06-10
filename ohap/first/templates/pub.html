@@ -34,21 +34,13 @@
         </a>
         {% endfor %}
         <div class = "comment">
-            <div class = "comment-top">
-            댓글
-            </div>
             <hr>
             <form method="post" action="{% url 'create_comment' mypub.id %}">
                 {%csrf_token%}
                 {%for i in comment_form%}
-                    {%if i.label != 'Post' %}
-                        {%if i.label == 'Author' %}
-                        {{i}}
+                        {%if i.label != 'Post' %}
+                        댓글: {{i}}
                         {%endif%}
-                        {%if i.label == '댓글!' %}
-                        {{i}}
-                        {%endif%}
-                    {%endif%}
                 {%endfor%}
                 <input type="hidden" name="post" value={{mypub.id}}>
                 <button type="submit">저장</button>
@@ -61,11 +53,8 @@
                 {%csrf_token%}
                 {%for recom_form in recomment_form%}
                     {%if recom_form.label != 'Comment' %}
-                        {%if recom_form.label == 'Author' %}
-                        +{{recom_form}}
-                        {%endif%}
                         {%if recom_form.label == '대댓글' %}
-                        {{recom_form}}
+                        +대댓글 {{recom_form}}
                         {%endif%}
                     {%endif%}
                 {%endfor%}

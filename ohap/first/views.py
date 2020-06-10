@@ -27,12 +27,12 @@ def beer(request, mymenu_id):
 
 
 def create_comment(request, mypub_id):
-    request.user
     filled_form = CommentForm(request.POST)
 
     if filled_form.is_valid():
-        filled_form.save()
-
+        a= filled_form.save(commit=False)
+        a.author=request.user
+        a.save()
     return redirect('pub', mypub_id)
 
 def delete_comment(request, com_id,mypub_id):
@@ -41,12 +41,12 @@ def delete_comment(request, com_id,mypub_id):
     return redirect('pub', mypub_id)
     
 def create_recomment(request, mypub_id):
-    request.user
     filled_form = ReCommentForm(request.POST) 
 
     if filled_form.is_valid():
-        filled_form.save()
-    
+        a= filled_form.save(commit=False)
+        a.author=request.user
+        a.save()
     return redirect('pub', mypub_id)
 
 def delete_recomment(request, recom_id, mypub_id):
