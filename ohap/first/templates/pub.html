@@ -19,35 +19,49 @@
         </a>
         {% endfor %}
         <div class = "comment">
+            <div class = "comment-top">
+            댓글
+            </div>
+            <hr>
             <form method="post" action="{% url 'create_comment' mypub.id %}">
                 {%csrf_token%}
                 {%for i in comment_form%}
                     {%if i.label != 'Post' %}
-                    {{i.label}} : {{i}} 
+                        {%if i.label == 'Author' %}
+                        {{i}}
+                        {%endif%}
+                        {%if i.label == '댓글!' %}
+                        {{i}}
+                        {%endif%}
                     {%endif%}
                 {%endfor%}
                 <input type="hidden" name="post" value={{mypub.id}}>
-                <input type="submit">
+                <button type="submit">저장</button>
             </form>
             <hr>
             {% for i in mypub.comment_set.all %}
-            <p> {{i}} <a href="{% url 'delete_comment' i.id mypub.id %}">삭제</a></p>
-
+            <p>{{i.author}}: {{i}} <a href="{% url 'delete_comment' i.id mypub.id %}">삭제</a></p>
+            <div class = recomment>
             <form method="post" action="{% url 'create_recomment' mypub.id %}">
                 {%csrf_token%}
                 {%for recom_form in recomment_form%}
                     {%if recom_form.label != 'Comment' %}
-                    {{recom_form.label}} : {{recom_form}}
+                        {%if recom_form.label == 'Author' %}
+                        +{{recom_form}}
+                        {%endif%}
+                        {%if recom_form.label == '대댓글' %}
+                        {{recom_form}}
+                        {%endif%}
                     {%endif%}
                 {%endfor%}
                 <input type="hidden" name="comment" value={{i.id}}>
-                <input type="submit">
+                <button type="submit">저장</button>
             </form>
-
             {%for recom in i.recomment_set.all%}
-            +{{recom}}
+            +{{recom.author}}: {{recom}}
             <a href="{% url 'delete_recomment' recom.id mypub.id %}">삭제</a><br>
             {%endfor%}
+            </div>
         <hr>
         {%endfor%}
         </div>

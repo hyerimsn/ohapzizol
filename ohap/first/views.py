@@ -28,6 +28,7 @@ def beer(request, mymenu_id):
 
 
 def create_comment(request, mypub_id):
+    request.user
     filled_form = CommentForm(request.POST)
 
     if filled_form.is_valid():
@@ -41,6 +42,7 @@ def delete_comment(request, com_id,mypub_id):
     return redirect('pub', mypub_id)
     
 def create_recomment(request, mypub_id):
+    request.user
     filled_form = ReCommentForm(request.POST) 
 
     if filled_form.is_valid():

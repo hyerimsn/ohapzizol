@@ -5,7 +5,7 @@ body{
 .wrapper{
     border: 2px solid cornflowerblue;
     border-radius: 10px;
-    max-width: 300px;
+    max-width: 340px;
 }
 
 .menu_list{
@@ -21,5 +21,9 @@ body{
 }
 
 .comment{
-    margin-left: 10px;
+    padding-left: 10px;
+}
+
+.comment-top{
+    text-align: center;
 }

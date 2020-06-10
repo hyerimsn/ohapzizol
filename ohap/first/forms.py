@@ -5,7 +5,7 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ('body','post')
+        fields = ('author','body','post')
 
 
 class ReCommentForm(forms.ModelForm):
@@ -13,4 +13,4 @@ class ReCommentForm(forms.ModelForm):
     
     class Meta:
         model = ReComment
-        fields = ('body','comment',)
+        fields = ('author','body','comment')
