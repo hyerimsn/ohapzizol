@@ -14,3 +14,6 @@ class ReCommentForm(forms.ModelForm):
     class Meta:
         model = ReComment
         fields = ('body','comment')
+        widgets = {
+            'body': forms.TextInput(attrs={'style': 'border-radius: 10px;'}),
+        }

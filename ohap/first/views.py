@@ -23,7 +23,11 @@ def beer(request, mymenu_id):
     mybeer = Menudetail.objects.filter(menulist=mymenu)
     # ilike = Menudetail.likes
     mymenu_id = mymenu_id
-    context ={'mymenu':mymenu,'mybeer':mybeer,'mymenu_id':mymenu_id}
+    user = request.user
+    is_liked = False
+    if mybeer.filter(likes = user.id).exists():
+        is_liked = True
+    context ={'mymenu':mymenu,'mybeer':mybeer,'mymenu_id':mymenu_id, 'is_liked' : is_liked}
     return render(request, 'beer.html', context)
 
 def create_comment(request, mypub_id):
@@ -58,16 +62,17 @@ def delete_recomment(request, recom_id, mypub_id):
 
 def like(request, mylike_id, mymenu_id):
     user = request.user
-    print(mylike_id)
+    is_liked = False 
     if request.method == 'POST' and user.is_authenticated:
         # user = request.user
         # mylike = request.POST.get('pk', None)
         ilike = Menudetail.objects.get(pk = mylike_id)
         if ilike.likes.filter(id = user.id).exists():
             ilike.likes.remove(user)
+            is_liked = True
         else:
             ilike.likes.add(user)
+            is_liked = False
     else:
         return render(request,'index.html', {'login_flag' : True})
-    context = {'likes_count' : ilike.likes}
     return redirect('beer', mymenu_id)

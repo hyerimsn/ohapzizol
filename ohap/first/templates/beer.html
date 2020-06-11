@@ -36,13 +36,19 @@
             {{i.beername}}<br>
         </div>
         <img class="beerimg" src="{{i.beerimage.url}}">
-        
-        <form method="POST" action="{% url 'like' i.id mymenu_id %}">
-            {% csrf_token %}
-        <input type="submit" value="❤" class="likebutton"> 
-            {{i.likes.count}}
-        </form>
-        
+        {% if is_liked %}
+            <form method="POST" action="{% url 'like' i.id mymenu_id %}">
+                {% csrf_token %}
+            <input type="submit" value="❤" class="likebutton"> 
+                {{i.likes.count}}
+            </form>
+        {% else %}
+            <form method="POST" action="{% url 'like' i.id mymenu_id %}">
+                {% csrf_token %}
+            <input type="submit" value="♡" class="likebutton"> 
+                {{i.likes.count}}
+            </form>
+        {% endif %}
         <div class="beers">
             {{i.taste}}<br>
         </div>
@@ -55,8 +61,7 @@
         <div class="beers">
             {{i.information}}<br>
         </div>
+        {% endfor %}
     </div>
-
-    {% endfor %}
 </body>
 </html>
