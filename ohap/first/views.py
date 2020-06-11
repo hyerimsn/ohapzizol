@@ -26,15 +26,17 @@ def beer(request, mymenu_id):
     context ={'mymenu':mymenu,'mybeer':mybeer,'mymenu_id':mymenu_id}
     return render(request, 'beer.html', context)
 
-
 def create_comment(request, mypub_id):
     filled_form = CommentForm(request.POST)
-
-    if filled_form.is_valid():
-        a= filled_form.save(commit=False)
-        a.author=request.user
-        a.save()
-    return redirect('pub', mypub_id)
+    user = request.user
+    if request.method == 'POST' and user.is_authenticated:
+        if filled_form.is_valid():
+            a= filled_form.save(commit=False)
+            a.author=request.user
+            a.save()
+        return redirect('pub', mypub_id)
+    else:
+        return render(request,'index.html', {'login_flag' : True})
 
 def delete_comment(request, com_id,mypub_id):
     mycom = Comment.objects.get(id = com_id)
@@ -42,8 +44,7 @@ def delete_comment(request, com_id,mypub_id):
     return redirect('pub', mypub_id)
     
 def create_recomment(request, mypub_id):
-    filled_form = ReCommentForm(request.POST) 
-
+    filled_form = ReCommentForm(request.POST)
     if filled_form.is_valid():
         a= filled_form.save(commit=False)
         a.author=request.user

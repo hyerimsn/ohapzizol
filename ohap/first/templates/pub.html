@@ -35,15 +35,18 @@
         {% endfor %}
         <div class = "comment">
             <hr>
-            <form method="post" action="{% url 'create_comment' mypub.id %}">
+            <form method="post" action="{% url 'create_comment' mypub.id %}" class='input_comment'>
                 {%csrf_token%}
                 {%for i in comment_form%}
                         {%if i.label != 'Post' %}
-                        댓글: {{i}}
+                        <div class='css_comment'>
+                            <label for='{{i}}' class='css2_comment'>COMMENT {{i}}</label>
+                            <input type="hidden" name="post" value={{mypub.id}}>
+                            <button type="submit">저장</button>
+                        </div>
                         {%endif%}
                 {%endfor%}
-                <input type="hidden" name="post" value={{mypub.id}}>
-                <button type="submit">저장</button>
+                
             </form>
             <hr>
             {% for i in mypub.comment_set.all %}
