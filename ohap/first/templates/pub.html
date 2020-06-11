@@ -57,7 +57,7 @@
                 {%for recom_form in recomment_form%}
                     {%if recom_form.label != 'Comment' %}
                         {%if recom_form.label == '대댓글' %}
-                        +대댓글 {{recom_form}}
+                        ↪ {{recom_form}}
                         {%endif%}
                     {%endif%}
                 {%endfor%}
