@@ -21,8 +21,9 @@ def pub(request, mypub_id):
 def beer(request, mymenu_id):
     mymenu = get_object_or_404(Menulist,pk=mymenu_id)
     mybeer = Menudetail.objects.filter(menulist=mymenu)
-    ilike = Menudetail.likes
-    context ={'mymenu':mymenu,'mybeer':mybeer,'ilike':ilike}
+    # ilike = Menudetail.likes
+    mymenu_id = mymenu_id
+    context ={'mymenu':mymenu,'mybeer':mybeer,'mymenu_id':mymenu_id}
     return render(request, 'beer.html', context)
 
 
@@ -54,17 +55,18 @@ def delete_recomment(request, recom_id, mypub_id):
     myrecom.delete()
     return redirect('pub', mypub_id)
 
-def like(request, mylike_id):
+def like(request, mylike_id, mymenu_id):
     user = request.user
+    print(mylike_id)
     if request.method == 'POST' and user.is_authenticated:
         # user = request.user
         # mylike = request.POST.get('pk', None)
         ilike = Menudetail.objects.get(pk = mylike_id)
-        if ilike.likes.filter(id = user.id) .exists():
+        if ilike.likes.filter(id = user.id).exists():
             ilike.likes.remove(user)
         else:
             ilike.likes.add(user)
     else:
         return render(request,'index.html', {'login_flag' : True})
     context = {'likes_count' : ilike.likes}
-    return redirect('beer', mylike_id)
+    return redirect('beer', mymenu_id)

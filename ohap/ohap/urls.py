@@ -34,8 +34,6 @@ urlpatterns = [
     path('account/sign_up/',account_views.sign_up,name="sign_up"), #회원가입
     path('account/login/',LoginView.as_view(),name="login"), #로그인
     path('account/logout/',LogoutView.as_view(),name="logout"), #로그아웃
-    path('like/<int:mylike_id>',like, name='like'),
-# <<<<<<< HEAD
-    
-# >>>>>>> 457bfaad762d78fbeff44690ef4370436a7b37be
+    path('like/<int:mylike_id>/<int:mymenu_id>/',like, name='like'),
+
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

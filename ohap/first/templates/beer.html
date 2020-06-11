@@ -37,10 +37,10 @@
         </div>
         <img class="beerimg" src="{{i.beerimage.url}}">
         
-        <form method="POST" action="{% url 'like' i.id %}">
+        <form method="POST" action="{% url 'like' i.id mymenu_id %}">
             {% csrf_token %}
-        <input type="submit" value="❤ {{i.likes.count}}" class="likebutton"> 
-            
+        <input type="submit" value="❤" class="likebutton"> 
+            {{i.likes.count}}
         </form>
         
         <div class="beers">
@@ -56,6 +56,7 @@
             {{i.information}}<br>
         </div>
     </div>
+
     {% endfor %}
 </body>
 </html>
